@@ -9,10 +9,6 @@ Purpose:
 Contains SQL queries developed for the Humane Society
 Database project.
 
-Sources:
-- Assignment 2 - SQL Queries
-- Assignment 4 - SQL Queries
-
 Demonstrated Concepts:
 - Joins
 - Aggregation
@@ -28,7 +24,7 @@ select distinct type
 from animal;
 
 -- =========================================================
--- Assignment 2 - Query A
+-- Query A
 -- Employees Living in Laval
 -- =========================================================
 --
@@ -48,7 +44,7 @@ WHERE city = 'Laval';
 
 
 -- =========================================================
--- Assignment 2 - Query B
+-- Query B
 -- Animals Received by Employee
 -- =========================================================
 --
@@ -85,7 +81,7 @@ ORDER BY
 
 
 -- =========================================================
--- Assignment 2 - Query C
+-- Query C
 -- Employment History of Roger McDonald
 -- =========================================================
 --
@@ -118,7 +114,7 @@ ORDER BY
 
 
 -- =========================================================
--- Assignment 2 - Query D
+-- Query D
 -- Manager Contact Information
 -- =========================================================
 --
@@ -156,45 +152,9 @@ WHERE a.name = 'Alfred Simpson'
   AND ad.adoptionDate = '2021-01-05';
 
 
-
--- =========================================================
--- Assignment 2 - Query D
--- Manager Contact Information
--- =========================================================
---
--- Find the manager responsible for the location
--- where Alfred Simpson adopted an animal on January 5, 2021.
---
--- Returns:
--- Manager First Name
--- Manager Last Name
--- Phone
--- Email
--- =========================================================
-
-SELECT
-    mng.firstName,
-    mng.lastName,
-    mng.phone,
-    mng.email
-    
-FROM Adopter a
-JOIN Adoption ad
-    ON a.SSN = ad.adopterSSN
-JOIN Admission adm
-    ON ad.AID = adm.AID
-JOIN Manage m
-    ON adm.LID = m.LID
-JOIN Employee mng
-    ON m.EID = mng.EID
-
-WHERE a.name = 'Alfred Simpson'
-  AND ad.adoptionDate = '2021-01-05';
-  
-  
   
   -- =========================================================
--- Assignment 4 - Query A
+--  Query E
 -- Adoptions Between Two Dates
 -- =========================================================
 --
@@ -227,7 +187,7 @@ WHERE ad.adoptionDate BETWEEN '2021-01-05' AND '2022-02-15';
 
 
 -- =========================================================
--- Assignment 4 - Query B
+--  Query F
 -- Animals Adopted By At Least 3 Adopters
 -- =========================================================
 --
@@ -255,7 +215,7 @@ HAVING COUNT(DISTINCT ad.adopterSSN) >= 3;
 
 
 -- =========================================================
--- Assignment 4 - Query C
+--  Query G
 -- Adopters Living In Different Provinces
 -- =========================================================
 --
@@ -279,7 +239,7 @@ WHERE ap.province <> l.province;
 
 
 -- =========================================================
--- Assignment 4 - Query D
+--  Query H
 -- Adopters Who Adopted Only Female Animals
 -- =========================================================
 --
@@ -309,7 +269,7 @@ WHERE NOT EXISTS
 
 
 -- =========================================================
--- Assignment 4 - Query E
+--  Query I
 -- Adopters Who Adopted All Animal Types
 -- =========================================================
 --
